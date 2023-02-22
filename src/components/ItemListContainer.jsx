@@ -1,11 +1,16 @@
-import React from 'react'
+import ItemList from "./ItemList";
+import Data from "../data.json"
+import { useParams } from "react-router-dom";
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
+  const { category } = useParams();
+  const catFilter = Data.filter((art) => art.category === category);
   return (
-    <>
-      <div>{greeting}</div>
-    </>
-  )
-}
+    <div>
+      <h2>Articulos de nuestra tienda</h2>
+      {category ? <ItemList articulos={catFilter} /> : <ItemList articulos={Data} />}
+    </div>
+  );
+};
 
-export default ItemListContainer
+export default ItemListContainer;
