@@ -1,6 +1,0 @@
-[
-    {"id":1, "name": "Lapicera", "price":300, "description":"Articulo de Libreria", "category": "LIBRERIA", "stock": 4, "image": "/assets/lapiceraazulbic.png"},
-    {"id":2, "name":"Lapiz", "price":100,  "description":"Articulo de Libreria", "category": "LIBRERIA", "stock": 3, "image": "/assets/lapiznegrobic.png"},
-    {"id":3, "name":"Monopoly",  "price":10000, "description":"Articulo de Jugueteria", "category": "JUGUETERIA", "stock": 5, "image": "/assets/monopoly.jpg"},
-    {"id":4, "name":"Estanciero",  "price":8000,  "description":"Articulo de Jugueteria", "category": "JUGUETERIA", "stock": 2, "image": "/assets/estanciero.jpg"}
-]

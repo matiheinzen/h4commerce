@@ -1,8 +1,22 @@
 import { useParams } from "react-router-dom";
 import ItemCount from "./ItemCount";
+import { useEffect, useState } from "react";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 const ItemDetail = ({ articulos }) => {
   const { id } = useParams();
+  const [producto, setProducto] = useState([]);
+  useEffect(() => {
+    const baseDatos = getFirestore();
+    const artRef = doc(baseDatos, "productos", `${id}`);
+    getDoc(artRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        setProducto(snapshot.data());
+      } else {
+        console.log("no existe archivo");
+      }
+    });
+  }, []);
   const artFilter = articulos.filter((art) => art.id == id);
   return (
     <>
@@ -20,7 +34,14 @@ const ItemDetail = ({ articulos }) => {
             <p>Precio: ${art.price}</p>
           </div>
           <div className="contador">
-              <ItemCount stock={art.stock}/>
+              <ItemCount
+                stock={art.stock}
+                id={art.id}
+                price={art.price}
+                name={art.name}
+                image={art.image}
+                description={art.description}
+              />
             </div>
         </div>
       </div>
